@@ -1,0 +1,60 @@
+Removes fog from an image by factoring the image into albedo and depth layers.
+
+More information on the theoretical foundations of the process, as well as
+implementation details, may be found in the following publications and
+technical reports:
+
+* Bayesian Defogging
+K. Nishino, L. Kratz, and S. Lombardi,
+in Int'l Journal of Computer Vision, vol. 98, no. 3, pp263-278, Jul., 2012.
+
+* Factorizing Scene Albedo and Depth from a Single Foggy Image
+L. Kratz and K. Nishino, 
+in Proc. of IEEE Twelfth International Conference on Computer Vision ICCV'09, pp1701-1708, Oct., 2009.
+
+* An Implementation of Bayesian Defogging
+G. Schwartz and K. Nishino,
+Technical Report DU-CS-13-02
+
+Please cite these references in your paper when this software is used in your research.
+
+usage: defog.py [-h] [--albedo-output ALBEDO_OUTPUT]
+                [--depth-output DEPTH_OUTPUT] [--no N_OUTER_ITERATIONS]
+                [--ni N_INNER_ITERATIONS]
+                [--airlight R G B | --airlight-rect X Y W H]
+                [--apw ALBEDO_PRIOR_WEIGHT] [--dpw DEPTH_PRIOR_WEIGHT]
+                [--dpt DEPTH_PRIOR] [-ms] [-id] [-v]
+                image
+
+Removes fog from an image by factoring the image into albedo and depth layers.
+
+positional arguments:
+  image                 Filename of the image to defog.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --albedo-output ALBEDO_OUTPUT
+                        Filename for the albedo layer image output.
+  --depth-output DEPTH_OUTPUT
+                        Filename for the depth layer image output.
+  --no N_OUTER_ITERATIONS
+                        Number of iterations of alternating minimization to
+                        perform. Each alternation iteration performs
+                        2*N_INNER_ITERATIONS steps.
+  --ni N_INNER_ITERATIONS
+                        Number of iterations allowed for optimization for each
+                        of the albedo/depth layers.
+  --airlight R G B      Use the given floating point [0-1] RGB value as the
+                        airlight color.
+  --airlight-rect X Y W H
+                        Specify the airlight as the mean RGB color within the
+                        given rectangular image region. If neither this option
+                        nor --airlight are provided, you will be prompted to
+                        select a region of airlight-colored image pixels.
+  --apw ALBEDO_PRIOR_WEIGHT
+  --dpw DEPTH_PRIOR_WEIGHT
+  --dpt DEPTH_PRIOR     Depth prior type. Choices are: laplace, gaussian.
+  -ms                   Enable multi-scale coarse-to-fine optimization.
+  -id                   Save the initial depth estimate to
+                        "initial_depth.png".
+  -v                    Enable verbose optimization progress display.

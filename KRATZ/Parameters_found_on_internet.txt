@@ -1,0 +1,10 @@
+pumpkins: --airlight-rect 0 0 10 10 --dpt gaussian -ms
+yellowmountain: --airlight-rect 0 0 10 10 --dpt gaussian --dpw 30 -no 4
+cones: --airlight-rect 0 0 10 10 --apw 1e-5
+canon7: --airlight-rect 0 0 10 10 --dpt gaussian --dpw 3 --apw 1e-6
+stadium1: --airlight 0.8 0.8 0.8 --dpt gaussian --dpw 30 -ms
+IMG_8766: --airlight-rect 0 0 10 10 -ms --apw 1e-5
+swan: --airlight-rect 362 100 4 12 --apw 4.5e-6 -ms
+sweden: --airlight 0.9 0.92 0.93 -ms --apw 1e-6
+house-input: --airlight 0.7 0.7 0.7
+U080-000026: --airlight-rect 300 0 10 10 --dpt laplace --ni 150 --apw 1e-14
